@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "jsconfig": {
+    "created": true
+  },
+  "settings": {
+    "fileCreated": true,
+    "directoryCreated": true,
+    "added": {
+      "files.exclude": [
+        ".gas-sync",
+        "jsconfig.json"
+      ],
+      "search.exclude": [
+        ".gas-sync",
+        "jsconfig.json"
+      ]
+    }
+  },
+  "typingsVersion": "2.0.8"
+}

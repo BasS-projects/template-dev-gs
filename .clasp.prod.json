@@ -1,0 +1,5 @@
+{
+  "scriptId": "PUT_SCRIPT_ID_PROD_HERE",
+  "rootDir": ".",
+  "scriptExtensions": [".gs"]
+}
