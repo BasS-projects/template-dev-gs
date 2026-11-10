@@ -2,6 +2,19 @@
 
 Template Google Apps Script สำหรับ clone ไปเริ่มโปรเจกต์ใหม่ พร้อม safe push จาก `template-shoppe-ads`: ตรวจ remote → สำรอง source ก่อนเขียนทับเมื่อจำเป็น → push → ตรวจผลและสร้าง Version อ้างอิง Git commit
 
+## ลิงก์โปรเจกต์
+
+Template นี้ยังไม่ผูกกับชีตหรือ Apps Script จริง หลังนำไปใช้ให้แทน placeholder ในตารางด้วยลิงก์ที่ตรวจสอบแล้วของโปรเจกต์นั้น เพื่อเปิดชีตจาก README ได้ทันที
+
+| Environment | Google Sheets | Apps Script |
+| --- | --- | --- |
+| Default | [เปิดชีต](https://docs.google.com/spreadsheets/d/PUT_SPREADSHEET_ID_HERE/edit) | [เปิดสคริปต์](https://script.google.com/home/projects/PUT_SCRIPT_ID_HERE/edit) |
+
+- ถ้าใช้หลาย environment ให้เปลี่ยนชื่อหรือเพิ่มแถวตามที่ใช้จริง เช่น TEST / PROD และตรวจให้แต่ละแถวตรงกับ `.clasp*.json` ของ environment นั้น
+- ใช้ Spreadsheet ID จาก URL ของชีต และ Script ID จาก Apps Script Project Settings เป็นคนละค่า ห้ามนำ Script ID มาสร้างลิงก์ชีต หากต้องเปิด tab เฉพาะ ให้ใช้ URL ที่ตรวจสอบแล้วพร้อม `#gid=...`
+- ถ้าชีตที่ผูกกับ script กับชีตข้อมูลที่อ่าน/เขียนเป็นคนละไฟล์ ให้ใส่ทั้งสองลิงก์พร้อมชื่อหน้าที่ หากไม่มีชีตให้ระบุว่าไม่ใช้ชีต; ถ้ายังไม่ทราบลิงก์ให้ระบุว่ารอยืนยันแทนการเดา
+- การใส่ลิงก์ไม่เปลี่ยนสิทธิ์เข้าถึง Google Sheets แต่เปิดเผย URL/ID ให้ผู้อ่าน repo เห็น ก่อนเผยแพร่ repo ให้ตรวจว่าลิงก์เหมาะกับผู้เข้าถึง repo โดยไม่เปิดสิทธิ์ชีตเพิ่มอัตโนมัติ
+
 ## เริ่มต้นหลัง clone
 
 ใช้ Node.js 20+ และ Git เปิด terminal ที่ root ของโปรเจกต์:
@@ -15,7 +28,7 @@ npm test
 
 1. เปลี่ยนชื่อโปรเจกต์ใน `package.json` แล้วรัน `npm install --package-lock-only` ให้ lockfile ตรงกัน
 2. เปิด spreadsheet ปลายทาง → Extensions → Apps Script → Project Settings แล้วคัดลอก **Script ID** ใส่ `.clasp.json` แทน `PUT_SCRIPT_ID_HERE` (คนละค่ากับ Spreadsheet ID)
-3. หากแยก TEST/PROD ให้ใส่ Script ID ของแต่ละโปรเจกต์ใน `.clasp.test.json` / `.clasp.prod.json`; ไฟล์ที่ยังไม่ใช้ปล่อย placeholder ไว้ได้
+3. หากแยก TEST/PROD ให้ใส่ Script ID ของแต่ละโปรเจกต์ใน `.clasp.test.json` / `.clasp.prod.json`; ไฟล์ที่ยังไม่ใช้ปล่อย placeholder ไว้ได้ แล้วเติมลิงก์ชีตและ Apps Script ในตาราง **ลิงก์โปรเจกต์** ให้ตรงกับแต่ละ environment
 4. เปิด [Google Apps Script API](https://script.google.com/home/usersettings) แล้วรัน `npm run login`
 5. ตั้งค่าตามหัวข้อถัดไปและเติม logic ใน `Main.gs`; manifest เริ่มต้นใช้ V8 และ timezone `Asia/Bangkok`
 6. Commit ไฟล์ที่แก้ให้ Git worktree สะอาด จากนั้นตรวจและ push ตามคำสั่งด้านล่าง
